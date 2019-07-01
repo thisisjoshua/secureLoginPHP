@@ -1,0 +1,58 @@
+<?php
+error_reporting(E_ALL & ~E_NOTICE);
+
+$conn=mysqli_connect("10.4.13.183", "root", "steven", "users");
+
+if(isset($_POST['submit']))
+        {
+        $userName = $_POST['userName'];
+        $userPass = $_POST['userPass'];
+
+        $res = mysqli_query($conn, "SELECT* from userInfo WHERE userName= '$userName' and userPass = '$userPass'");
+        $result=mysqli_fetch_array($res);
+        if($result)
+        {
+                header("location:login_form.php");
+        } else {
+                echo "Log in failed!";
+                }
+        }
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<hl>PHP/MySQL Login</hl>
+</head>
+<body>
+
+<form method="POST" form action="">
+        userName:-<input type="text" placeholder="Username" name ="userName" required=""><br><br>
+
+        userPass:-<input type="password" placeholder="Password" name="userPass" required=""><br><br>
+        <input type="submit" name="submit" value="Login" >
+
+</form>
+
+</body>
+</html>
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+"login.php" 40L, 824C                                                                                 1,1           All
